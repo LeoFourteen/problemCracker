@@ -2,15 +2,17 @@
 #define _CRACK_HPP_
 
 #include<vector>
+#include<array>
 #include <map>
 
 class Cracker
 {
 public:
-	typedef std::vector<std::vector<char>> ResultsVec;
+	typedef std::array<char, 10> ResultTryArr;
+	typedef std::vector<ResultTryArr> ResultsVec;
 public:
 	Cracker();
-	const ResultsVec& getResults();
+	const ResultsVec& getResults();	
 private:
 	void makeResultTry(size_t prblmNo);
 	bool checkResult();
@@ -27,7 +29,7 @@ private:
 
 	void getMinAndMax();
 private:
-	std::vector<char> m_resultTry;
+	ResultTryArr m_resultTry;
 	ResultsVec m_results;
 	size_t m_min;
 	size_t m_max;

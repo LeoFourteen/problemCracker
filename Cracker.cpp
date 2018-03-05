@@ -1,12 +1,15 @@
 #include "Cracker.h"
 #include<iostream>
-Cracker::Cracker() 
+Cracker::Cracker()
 {
-	makeResultTry(1);
 }
 
 const Cracker::ResultsVec& Cracker::getResults()
 {
+	if (m_results.size() == 0)
+	{
+		makeResultTry(1);
+	}
 	return m_results;
 }
 
@@ -16,9 +19,8 @@ void Cracker::makeResultTry(size_t prblmNo)
 	{
 		for (char ans = 'A'; ans <= 'D'; ans++)
 		{
-			m_resultTry.push_back(ans);
+			m_resultTry[prblmNo-1] = ans;
 			makeResultTry(prblmNo + 1);
-			m_resultTry.pop_back();
 		}
 	}
 	else
